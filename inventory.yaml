@@ -1,0 +1,62 @@
+hq:
+  name: "Headquarters"
+  public_ip: "203.0.113.1"
+  vpn_ip: "10.200.0.1"
+  lan_subnet: "192.168.0.0/24"
+  wg_port: 51820
+  dns: "192.168.0.10"
+  # All services HQ exposes to branches
+  services:
+    http:  { port: 80,   proto: tcp }
+    https: { port: 443,  proto: tcp }
+    ssh:   { port: 22,   proto: tcp }
+    dns:   { port: 53,   proto: udp }
+    rdp:   { port: 3389, proto: tcp }
+    ntp:   { port: 123,  proto: udp }
+
+branches:
+  - id: branch_cairo
+    name: "Branch Cairo"
+    public_ip: "203.0.113.10"
+    vpn_ip: "10.200.0.2"
+    lan_subnet: "192.168.1.0/24"
+    wg_port: 51820
+    primary_link: fiber
+    backup_link: 4g
+    backup_public_ip: "203.0.114.10"
+    approved_services:
+      - http
+      - https
+      - dns
+      - ntp
+
+  - id: branch_alex
+    name: "Branch Alexandria"
+    public_ip: "203.0.113.20"
+    vpn_ip: "10.200.0.3"
+    lan_subnet: "192.168.2.0/24"
+    wg_port: 51820
+    primary_link: fiber
+    backup_link: dsl
+    backup_public_ip: "203.0.114.20"
+    approved_services:
+      - http
+      - https
+      - dns
+      - rdp
+      - ntp
+
+  - id: branch_luxor
+    name: "Branch Luxor"
+    public_ip: "203.0.113.30"
+    vpn_ip: "10.200.0.4"
+    lan_subnet: "192.168.3.0/24"
+    wg_port: 51820
+    primary_link: fiber
+    backup_link: 4g
+    backup_public_ip: "203.0.114.30"
+    approved_services:
+      - http
+      - https
+      - dns
+      - ntp

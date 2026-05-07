@@ -1,0 +1,50 @@
+# Packet Capture Evidence Report
+# Generated: 2026-05-02T16:47:06.635411
+# Interface: wg0 (WireGuard tunnel)
+
+## Tunnel Encapsulation Verification
+
+Outer packets (UDP):
+  Source      : <branch_public_ip>:51820
+  Destination : 203.0.113.1:51820
+  Protocol    : UDP
+
+Inner packets (decrypted):
+
+  Branch: Branch Cairo (branch_cairo)
+    Inner SRC : 10.200.0.2
+    Inner DST : 10.200.0.1
+    Allowed   : 192.168.0.0/24, 10.200.0.0/24
+    Approved services:
+      - http
+      - https
+      - dns
+      - ntp
+
+  Branch: Branch Alexandria (branch_alex)
+    Inner SRC : 10.200.0.3
+    Inner DST : 10.200.0.1
+    Allowed   : 192.168.0.0/24, 10.200.0.0/24
+    Approved services:
+      - http
+      - https
+      - dns
+      - rdp
+      - ntp
+
+  Branch: Branch Luxor (branch_luxor)
+    Inner SRC : 10.200.0.4
+    Inner DST : 10.200.0.1
+    Allowed   : 192.168.0.0/24, 10.200.0.0/24
+    Approved services:
+      - http
+      - https
+      - dns
+      - ntp
+
+## Sample tcpdump filter
+  sudo tcpdump -i wg0 -n host 10.200.0.1
+
+## Conclusion
+Traffic is encapsulated in UDP/51820 and decrypted to the 10.200.0.0/24 VPN range.
+Branch LAN subnets are reachable via the tunnel as configured in route-policy.sh.

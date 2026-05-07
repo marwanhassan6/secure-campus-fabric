@@ -1,0 +1,29 @@
+{
+  "branch_cairo": {
+    "id": "branch_cairo",
+    "name": "Branch Cairo",
+    "status": "UP",
+    "link": "fiber",
+    "link_state": "primary",
+    "latency_ms": 41.44,
+    "checked_at": "2026-05-02T16:46:55.552933"
+  },
+  "branch_alex": {
+    "id": "branch_alex",
+    "name": "Branch Alexandria",
+    "status": "UP",
+    "link": "fiber",
+    "link_state": "primary",
+    "latency_ms": 9.46,
+    "checked_at": "2026-05-02T16:46:58.592881"
+  },
+  "branch_luxor": {
+    "id": "branch_luxor",
+    "name": "Branch Luxor",
+    "status": "UP",
+    "link": "fiber",
+    "link_state": "primary",
+    "latency_ms": 44.26,
+    "checked_at": "2026-05-02T16:47:01.631613"
+  }
+}
